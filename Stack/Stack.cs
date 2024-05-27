@@ -19,26 +19,20 @@ public class Stack
         }
         else
         {
-            Console.WriteLine("Null cannot be added into the stack");
+            throw new InvalidOperationException();
         }
     }
 
     public object Pop()
     {
-        try
+        if (Objects.Count == 0)
         {
-            if (Objects.Count == 0)
-            {
-                throw new ArgumentOutOfRangeException("thisParameter");
-            }
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            Console.WriteLine("Pop() cannot be called on an empty stack");            
+            throw new ArgumentOutOfRangeException();
         }
 
-        var popped = Objects[Objects.Count - 1];
-        Objects.RemoveAt(Objects.Count - 1);
+        var index = Objects.Count - 1;
+        var popped = Objects[index];
+        Objects.RemoveAt(index);
         return popped;
     }
 

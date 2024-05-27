@@ -21,7 +21,7 @@ while (true)
         }
         catch (InvalidOperationException)
         {
-            Console.WriteLine("Null cannot be added onto the stack");
+            Console.WriteLine("Null cannot be pushed onto the stack");
             Console.WriteLine();
         }
     }

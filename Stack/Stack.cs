@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 public class Stack
 {
-    public object obj { get; set; }  
+    public object obj { get; set; }
     public readonly List<object> Objects;
 
     public Stack()
@@ -13,18 +13,11 @@ public class Stack
 
     public void Push(object obj)
     {
-        try
+        if (obj != null)
         {
-            if (obj != null)
-            {
-                Objects.Add(obj);
-            }
-            else
-            {
-                throw new InvalidOperationException();
-            }
+            Objects.Add(obj);
         }
-        catch (InvalidOperationException)
+        else
         {
             Console.WriteLine("Null cannot be added into the stack");
         }
@@ -36,13 +29,12 @@ public class Stack
         {
             if (Objects.Count == 0)
             {
-                throw new InvalidOperationException();
+                throw new ArgumentOutOfRangeException("thisParameter");
             }
         }
-        catch (InvalidOperationException)
+        catch (ArgumentOutOfRangeException)
         {
-            Console.WriteLine("Pop() cannot be called on an empty stack");
-            return obj;
+            Console.WriteLine("Pop() cannot be called on an empty stack");            
         }
 
         var popped = Objects[Objects.Count - 1];
